@@ -1,59 +1,95 @@
-# Desafio Kitsu - Firedev IT
 
-Olá Dev! Tudo bem?
+O projeto é uma lista de cadastro que adiciona, apaga e altera a os já cadastrados na lista
+Assim como ele responde e ajuda o usuário quando ele digita errado!
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso!
+ Rafael Henrique: package br.com.interview.prova;
 
-Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import br.com.relembrando.utils.Utils;
 
-Vamos usar esse teste para validar a sua lógica, design da sua solução, código legível, estruturação do código, entre outros fatores.
+public class Prova {
 
-Vamos ao teste!
+	public static void main(String[] args) {
 
-## Desafio
+		Scanner scan = new Scanner(System.in);
+		List<String> usuarios = new ArrayList<String>();
 
-Realizar consultas na API [https://kitsu.docs.apiary.io](https://kitsu.docs.apiary.io)
+		int opcao = 0;
 
-Construir os seguintes endpoints:
- - Retorno dos animes mais populares;
- - Retorno dos mangas mais populares;
- - Buscar anime ou manga com filtros (título, ano, etc);
- - Obter informações de um anime ou manga;
- - Obter informações de um episodio de um anime especifico;
+		while (opcao != 4) {
 
-## Regras
+			Utils.tela();
 
- 1. Linguagens JAVA ou PHP.
- 2. Poderá ser feito utilizando qualquer framework.
- 3. O código deve ser orientado a objeto.
- 4. Deve ser versionado usando o git e disponibilizado no GitHub ou Bitbucket.
- 5. Descrever no README do projeto as especificações, tecnologias e demais informações do projeto.
+			opcao = scan.nextInt();
 
-## Plus
+			if (opcao <= 4 & opcao >= 1) {
 
- 1. Deploy no Heroku.
- 2. Criar estrutura no banco para salvar as buscas do usuário.
- 3. Criar um relatório de itens mais pesquisados com base na estrutura criada.
+				if (opcao == 1) {
+					System.out.println("===> digite o nome do usuário para efetuar cadastro :");
 
-## O que apreciamos?
+					usuarios.add(scan.next());
 
- - Organização;
- - Simplicidade;
- - Objetividade;
- - Reúso de código;
- - Testes unitários e ou de integração;
- - Padronização de código;
- - Padrões de projeto;
- - Documentação de código e endpoints.
+				} else if (opcao == 2) {
+					if (!usuarios.isEmpty()) {
+						for (String usuario : usuarios) {
+							System.out.println("usuário : " + usuario);
+						}
+						System.out.println("===> digite o nome do usuário deseja remover :");
+						String nome = scan.next();
+						if (usuarios.contains(nome)) {
+							usuarios.remove(nome);
+						} else {
+							System.out.println("usuário não existe...");
+						}
 
-## Quem buscamos?
+					} else {
+						System.out.println("não há usuarios para serem removidos ");
+					}
+				} else if (opcao == 3) {
 
-Queremos uma pessoa que goste do que faz, trabalhe em equipe e tenha vontade de inovar, buscando sempre atualização e soluções inovadoras.
+					if (!usuarios.isEmpty()) {
+						System.out.println("==> os usuários cadastrados são : ");
+						for (String usuario : usuarios) {
+							System.out.println("usuário : " + usuario);
 
-Se você se identificou, venha fazer parte do nosso time!
+						}
+					} else {
+						System.out.println("==> Não existem usuários cadastrados no sistema.");
 
-## 
+					}
+				} else if (opcao == 4) {
 
-Qualquer duvida pode entrar em contato com o recrutador.
+					System.out.println("==> Encerrando sistema...");
 
-_Não precisa desenvolver uma interface gráfica, porem é um diferencial._
+				}
+			} else {
+				System.out.println("==> opção inválida... ");
+				System.out.println("==> digite um numero de 1 a 4 ");
+			}
+
+		}
+
+	}
+
+} 
+-------------------------------------------------------------------------------------------------------------------------------------
+Rafael Henrique: package br.com.interview.utils;
+
+public class Utils {
+	
+	public static void tela() {
+		System.out.println("||=================================================||");
+		System.out.println("||       {{Escolha a opção desejada :}}            ||");
+		System.out.println("||=================================================||");
+		System.out.println("||----> 1 – Cadastrar novo usuário                 ||");
+		System.out.println("||----> 2 – Remover um usuário cadastrado          ||");
+		System.out.println("||----> 3 – Consultar todos os usuários cadastrados||");
+		System.out.println("||----> 4 – Sair do sistema                        ||");
+		System.out.println("||=================================================||");
+		
+		
+	}
+
+}
