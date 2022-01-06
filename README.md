@@ -1,6 +1,4 @@
 
-O projeto é uma lista de cadastro que adiciona, apaga e altera a os já cadastrados na lista
-Assim como ele responde e ajuda o usuário quando ele digita errado!
 
  Rafael Henrique: package br.com.interview.prova;
 
